@@ -77,10 +77,10 @@ public class Main {
         System.out.println("What is the student's last name?: ");
         last_name = scanner.nextLine();
 
-        //assuming that we are always keeping these domains
-        email = first_name.toLowerCase() + "." + last_name.toLowerCase() + "@example.com";
+        System.out.println("What is the student's email?: ");
+        email = scanner.nextLine();
 
-        System.out.println("What is their enrollment date (yyyy-MM-dd)? : ");
+        System.out.println("What is their enrollment date (yyyy-mm-dd)? : ");
         dateString = scanner.nextLine();
         try{
             java.util.Date utilDate = dateFormatter.parse(dateString);
@@ -106,6 +106,10 @@ public class Main {
             e.printStackTrace();
         }
     }
+
+//    public static void deleteStudent(Connection connection, Scanner scanner){
+//
+//    }
 
 
 }
