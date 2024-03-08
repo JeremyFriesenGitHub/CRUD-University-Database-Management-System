@@ -33,7 +33,7 @@ The University Database Management System (UDMS) is a Java-based application des
    - The application will connect to the specified PostgreSQL database and present the main menu for database operations.
 
 4. **Tutorial**:
-   - For a comprehensive tutorial of the setup and usage of the application, a tutorial video is available [here](). 
+   - For a comprehensive tutorial of the setup and usage of the application, a tutorial video is available [here](https://youtu.be/6o1gHDBhOTU). 
 
 ## Usage
 
