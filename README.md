@@ -41,4 +41,4 @@ After starting the application, use the console menu to choose an action by ente
 
 ## License
 
-This project is open-source and available under the MIT License. See the [LICENSE](https://github.com/JeremyFriesenGitHub/COMP3005_Assignment-3_Question-1/blob/master/LICENSE) file for more details.
+This project is open-source and available under the MIT License. See the [LICENSE](https://github.com/JeremyFriesenGitHub/COMP3005_Assignment-3_Question-1/blob/main/LICENSE) file for more details.
