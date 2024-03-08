@@ -159,7 +159,7 @@ public class Main {
         int choice;
 
         do {
-            System.out.println("\n\nWelcome to the 3005 Assignment 3 Students Database!\n");
+            System.out.println("\n\nWelcome to the 3005 Database!\n");
             System.out.println("What would you like to do:");
             System.out.println("  (1) View all students");
             System.out.println("  (2) Add student");
