@@ -22,7 +22,7 @@ The University Database Management System (UDMS) is a Java-based application des
 1. **Database Preparation**:
    - Ensure PostgreSQL is installed and running on your system.
    - Create a database named `university`.
-   - Use the provided [SQL script](https://github.com/JeremyFriesenGitHub/COMP3005_Assignment-3_Question-1/blob/master/init.sql) to create the necessary table(s) and populate them with initial data if needed.
+   - Use the provided [SQL script](https://github.com/JeremyFriesenGitHub/COMP3005_Assignment-3_Question-1/blob/main/init.sql) to create the necessary table(s) and populate them with initial data if needed.
 
 2. **Configuration**:
    - Open the `Main` class and locate the database connection setup section.
