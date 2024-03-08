@@ -1,5 +1,4 @@
 package org.example;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -119,9 +118,7 @@ public class Main {
             System.out.println("Error deleting student: ");
             e.printStackTrace();
         }
-
     }
-
     public static void updateEmail(Connection connection, Scanner scanner) {
         System.out.println("\nYou are updating a student's email!");
 
@@ -135,14 +132,9 @@ public class Main {
         String sql = "UPDATE students SET email = ? WHERE student_id = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            // Set the parameters for the prepared statement
             statement.setString(1, email);
             statement.setInt(2, student_id);
-
-
             int affectedRows = statement.executeUpdate();
-
-
             if (affectedRows > 0) {
                 System.out.println("Email updated successfully.");
             } else {
@@ -172,25 +164,12 @@ public class Main {
             scanner.nextLine();
 
             switch (choice) {
-                case 1:
-                    getAllStudents(connection);
-                    break;
-                case 2:
-                    addStudent(connection, scanner);
-                    break;
-                case 3:
-                    deleteStudent(connection, scanner);
-                    break;
-                case 4:
-                    updateEmail(connection, scanner);
-                    break;
-                case 0:
-                    // Optionally handle exit case if needed
-                    break;
-                default:
-                    System.out.println("Invalid selection. Please try again.");
-                    // Removed the redundant scanner.nextInt() call
-                    break;
+                case 1 -> getAllStudents(connection);
+                case 2 -> addStudent(connection, scanner);
+                case 3 -> deleteStudent(connection, scanner);
+                case 4 -> updateEmail(connection, scanner);
+                case 0 -> System.out.println("Exiting!");
+                default -> System.out.println("Invalid selection. Please try again.");
             }
         } while (choice != 0);
         scanner.close();
