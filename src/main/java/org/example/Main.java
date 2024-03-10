@@ -17,6 +17,7 @@ public class Main {
         String password = "postgres";
 
         try{
+            //connect to driver
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(url, user, password);
 
@@ -47,15 +48,11 @@ public class Main {
 
             while(resultSet.next()){
 
-                //fullName result set
+                //fullName result set variable
                 String fullName = resultSet.getString("first_name") + " " + resultSet.getString("last_name");
 
-                //print out formatted data
-                System.out.printf("%-5d %-20s %-30s %-15s\n",
-                        resultSet.getInt("student_id"),
-                        fullName,
-                        resultSet.getString("email"),
-                        resultSet.getDate("enrollment_date").toString());
+                //print out formatted data from resultSet
+                System.out.printf("%-5d %-20s %-30s %-15s\n", resultSet.getInt("student_id"), fullName, resultSet.getString("email"), resultSet.getDate("enrollment_date").toString());
             }
             //error
         } catch (Exception e){
@@ -66,11 +63,11 @@ public class Main {
 
     //addStudent
     public static void addStudent(Connection connection, Scanner scanner){
-        //init
+        //init date
         Date date;
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
-        //receive input
+        //get user input
         System.out.println("\nYou are adding a student!");
 
         System.out.println("What is the student's first name?: ");
@@ -85,28 +82,33 @@ public class Main {
         System.out.println("What is their enrollment date (yyyy-mm-dd)? : ");
         String dateString = scanner.nextLine();
 
-        //format date
+        //format the date
         try{
             java.util.Date utilDate = dateFormatter.parse(dateString);
             date = new Date(utilDate.getTime());
 
-            //error
+            //error date
         } catch (Exception e){
             System.out.println("Error parsing the date: ");
             e.printStackTrace();
             return;
         }
+        
         //sql query
         String sql = "INSERT INTO students (first_name, last_name, email, enrollment_date) VALUES (?, ?, ?, ?)";
 
         //create insert update with info
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            //set statement with user input
             statement.setString(1, first_name);
             statement.setString(2, last_name);
             statement.setString(3, email);
             statement.setDate(4, date);
 
+            //execute update
             statement.executeUpdate();
+
+            //success message
             System.out.println("Student added successfully!");
 
             //error
@@ -118,10 +120,10 @@ public class Main {
 
     //deleteStudent
     public static void deleteStudent(Connection connection, Scanner scanner){
-
+        
         System.out.println("\nYou are deleting a student!");
 
-        //get input
+        //get user input
         System.out.println("What is the student's ID?: ");
         int student_id = Integer.parseInt(scanner.nextLine());
 
@@ -130,8 +132,10 @@ public class Main {
 
         //delete student
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            //create prepared statement
             statement.setInt(1, student_id);
 
+            //execute update and count rows affected
             int rowsAffected = statement.executeUpdate();
 
             //sucess message
@@ -154,7 +158,7 @@ public class Main {
 
         System.out.println("\nYou are updating a student's email!");
 
-        //input
+        //get user input
         System.out.println("What is the student's ID?: ");
 
         int student_id = Integer.parseInt(scanner.nextLine());
@@ -167,8 +171,11 @@ public class Main {
 
         //executeUpdate
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            //create prepared statement
             statement.setString(1, email);
             statement.setInt(2, student_id);
+
+            //execute update and count affected rows
             int affectedRows = statement.executeUpdate();
 
             //success message
@@ -193,6 +200,7 @@ public class Main {
 
         //loop for main control view
         do {
+            //view
             System.out.println("\n\nWelcome to the 3005 Database!\n");
             System.out.println("What would you like to do:");
             System.out.println("  (1) View all students");
@@ -202,11 +210,13 @@ public class Main {
             System.out.println("  (0) Exit\n");
 
             System.out.print("Enter your selection: ");
+            //input
             choice = scanner.nextInt();
             scanner.nextLine();
 
             //call previous functions in loop
             switch (choice) {
+                //choices
                 case 1 -> getAllStudents(connection);
                 case 2 -> addStudent(connection, scanner);
                 case 3 -> deleteStudent(connection, scanner);
