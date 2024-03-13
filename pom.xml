@@ -22,4 +22,11 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub JeremyFriesenGitHub Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/JeremyFriesenGitHub/CRUD-University-Database-Management-System</url>
+        </repository>
+    </distributionManagement>
 </project>
