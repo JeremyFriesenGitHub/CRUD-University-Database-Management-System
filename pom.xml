@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    groupId>org.example</groupId>
+    <groupId>org.example</groupId>
     <artifactId>CRUD-University-Database-Management-System-main</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -26,7 +26,7 @@
         <repository>
             <id>github</id>
             <name>GitHub JeremyFriesenGitHub Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/JeremyFriesenGitHub/CRUD-University-Database-Management-System</url>
+            <url>https://maven.pkg.github.com/JeremyFriesenGitHub/CRUD-Unviersity-Database-Management-System</url>
         </repository>
     </distributionManagement>
 </project>
